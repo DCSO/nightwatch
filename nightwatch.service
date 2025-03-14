@@ -1,0 +1,12 @@
+[Unit]
+Description=plugin based file analysis framework
+Documentation=https://github.com/DCSO/nightwatch
+
+[Service]
+SyslogIdentifier=nightwatch
+EnvironmentFile=-/etc/default/nightwatch
+ExecStart=/usr/local/bin/nightwatch $NIGHTWATCH_ARGS
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
