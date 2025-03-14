@@ -1,0 +1,1 @@
+NIGHTWATCH_ARGS=-maxspace 100000 -log /var/log/
