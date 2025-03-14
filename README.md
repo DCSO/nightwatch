@@ -1,5 +1,11 @@
 # nightwatch
 
+> [!NOTE]
+> This software is provided by DCSO as Free Software without the
+> explicit intention or expectation of providing support or further ongoing
+> development activities. We will consider contributions if they are of use to
+> the community if time allows but will not take feature requests.
+
 Nightwatch is a plugin-based file analysis framework for Suricata file stores.
 
 The Nightwatch daemon looks for new files in the Suricata file extraction target
