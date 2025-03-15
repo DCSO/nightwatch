@@ -119,6 +119,53 @@ Usage of ./build/nightwatch:
         Verbose output
 ```
 
+## Suricata Configuration
+
+Note that Suricata needs libmagic support to support the identification of
+executables from carved files.
+
+### Additional EVE Output
+
+Nightwatch builds a scanning backlog from Suricata `fileinfo` events: it
+receives an EVE (Extensible Event Format) notification for each extracted file
+and runs the plugins on them. In order to ensure that `fileinfo` events are
+included in the output and also to reduce load on Nightwatch having to process
+potentially thousands of non-`fileinfo` events per second, it is best to add a
+dedicated EVE output to the Suricata configuration in `suricata.yaml`:
+
+```yaml
+outputs:
+
+[...]
+
+  # for nightwatch we log file events to a socket
+  - eve-log:
+      enabled: yes
+      filetype: unix_stream
+      filename: /tmp/files.sock
+      types:
+        - files:
+            force-magic: no
+
+[...]
+```
+
+We then configure this socket as the input for Nightwatch (`-socket` parameter).
+
+### Ruleset Additions
+
+Suricata needs to run some rules which detect executables in carved files and
+cause them to be dumped to the filestore on disk:
+```
+alert http any any -> any any (msg:"FILE magic - Windows executable"; file.magic; content:"for MS Windows"; filestore; noalert; sid:1; rev:1;)
+alert smtp any any -> any any (msg:"FILE magic - Windows executable"; file.magic; content:"for MS Windows"; filestore; noalert; sid:2; rev:1;)
+alert smb any any -> any any (msg:"FILE magic - Windows executable"; file.magic; content:"for MS Windows"; filestore; noalert; sid:3; rev:1;)
+alert nfs any any -> any any (msg:"FILE magic - Windows executable"; file.magic; content:"for MS Windows"; filestore; noalert; sid:4; rev:1;)
+alert ftp-data any any -> any any (msg:"FILE magic - Windows executable"; file.magic; content:"for MS Windows"; filestore; ftpdata_command:stor; noalert; sid:5; rev:1;)
+```
+These can be extend as desired to support other architectures or binary types.
+
+
 ## Running Nightwatch as a service
 
 The `nightwatch.service` file is included to run Nightwatch if installed in
