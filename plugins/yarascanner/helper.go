@@ -40,7 +40,7 @@ func loadRules(ruleFile string, isXz bool) error {
 
 		scanRules, err = yara.ReadRules(ruleReader)
 		if err != nil {
-			return errors.New("error loading local yara plugin rule file")
+			return fmt.Errorf("error loading local yara plugin rule file: %w", err)
 		}
 		log.Infof("Loaded [%d] rules", len(scanRules.GetRules()))
 	} else {
