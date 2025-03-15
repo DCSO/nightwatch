@@ -75,7 +75,7 @@ func main() {
 	var u *uploader.Uploader
 	var filestoreVersion = flag.Int("storeversion", 2, "Filestore version")
 	var sockPath = flag.String("socket", "/tmp/files.sock", "Path for fileinfo EVE input socket")
-	var suriFilesDir = flag.String("dir", "/var/log/suricata/files", "Directory where suricata stores files")
+	var suriFilesDir = flag.String("dir", "/var/log/suricata/filestore", "Directory where suricata stores files")
 	var logPath = flag.String("log", "/var/log/", "Path for nightwatch log files")
 	var dataPath = flag.String("data", "/var/lib/nightwatch/", "Path for the file database")
 	var amqpURI = flag.String("amqpuri", "localhost:5672", "Endpoint and port for the AMQP connection")
