@@ -8,11 +8,12 @@
 
 Nightwatch is a plugin-based file analysis framework for Suricata file stores.
 
-The Nightwatch daemon looks for new files in the Suricata file extraction target
-directory and calls various plugins to analyze them. JSON reports for every
-scanned file as well as the plugin output can be forwarded to an AMQP consumer
-for further analysis and storage. Nightwatch currently only supports AMQP (e.g.
-RabbitMQ) as an output target.
+The Nightwatch daemon reacts to files carved from traffic by Suricata's file
+extraction functionality, calling various plugins to analyze them. JSON reports
+for every scanned file, including all plugin output, can be forwarded to an AMQP
+consumer for further analysis and storage. Moreover, files marked as suspicious
+can optionally also be uploaded to an S3-compatible file store for later
+centralized analysis.
 
 ## Current plugins
 
@@ -27,7 +28,7 @@ them first (e.g. in Debian/Ubuntu):
 apt install libyara-dev libmagic-dev
 ```
 
-Nightwatch uses the default Go build system. To build the binary in the `build`
+Nightwatch uses the regular Go build system. To build the binary in the `build`
 sub directory simply use the supplied Makefile:
 
 ```
@@ -183,3 +184,7 @@ to the `nightwatch` process:
 * `SIGHUP`: reinitialize all plugins, e.g. reloading YARA rules
 * `SIGUSR1`: rescans all files, without cleaning the existing database
 * `SIGUSR2`: rescans all files from scratch, overwriting the existing database
+
+## License
+
+3-clause BSD, see [LICENSE](LICENSE)
