@@ -1,6 +1,6 @@
 module github.com/DCSO/nightwatch
 
-go 1.23.4
+go 1.24.0
 
 require (
 	github.com/NeowayLabs/wabbit v0.0.0-20210927194032-73ad61d1620e
@@ -13,7 +13,7 @@ require (
 	github.com/sirupsen/logrus v1.9.3
 	github.com/vimeo/go-magic v1.0.0
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8
-	golang.org/x/crypto v0.36.0
+	golang.org/x/crypto v0.45.0
 )
 
 require (
@@ -25,7 +25,7 @@ require (
 	github.com/stretchr/testify v1.10.0 // indirect
 	github.com/tiago4orion/conjure v0.0.0-20150908101743-93cb30b9d218 // indirect
 	go.etcd.io/bbolt v1.4.0 // indirect
-	golang.org/x/net v0.38.0 // indirect
-	golang.org/x/sys v0.31.0 // indirect
-	golang.org/x/text v0.23.0 // indirect
+	golang.org/x/net v0.47.0 // indirect
+	golang.org/x/sys v0.38.0 // indirect
+	golang.org/x/text v0.31.0 // indirect
 )
