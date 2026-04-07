@@ -4,7 +4,7 @@ go 1.24.0
 
 require (
 	github.com/NeowayLabs/wabbit v0.0.0-20210927194032-73ad61d1620e
-	github.com/buger/jsonparser v1.1.1
+	github.com/buger/jsonparser v1.1.2
 	github.com/etcd-io/bbolt v1.3.3
 	github.com/hillu/go-yara/v4 v4.3.3
 	github.com/jarcoal/httpmock v1.3.1
