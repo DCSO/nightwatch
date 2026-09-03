@@ -9,7 +9,7 @@ require (
 	github.com/hillu/go-yara/v4 v4.3.3
 	github.com/jarcoal/httpmock v1.3.1
 	github.com/minio/minio-go v6.0.14+incompatible
-	github.com/rabbitmq/amqp091-go v1.10.0
+	github.com/rabbitmq/amqp091-go v1.13.0
 	github.com/sirupsen/logrus v1.9.3
 	github.com/vimeo/go-magic v1.0.0
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8
